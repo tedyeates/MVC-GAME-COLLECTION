@@ -24,12 +24,21 @@ public class MenuPanel extends JPanel{
         startGames.add(new JButton("Brick Breaker"));
 
         int x = 0;
+        int position = GridBagConstraints.PAGE_START;
+        int seqIncrement = 10;
         c.gridx = 0;
-        c.weightx = 1;
+        c.weightx = .7;
         c.weighty = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
         for(JButton button : startGames){
-            button.setSize(500,100);
+            button.setSize(1000,100);
+
+            //anchors elements
+            c.anchor = position;
+            seqIncrement = -1 * (seqIncrement - 1);
+            position += seqIncrement;
             c.gridy = x++;
+
             add(button,c);
         }
 
@@ -44,7 +53,7 @@ public class MenuPanel extends JPanel{
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(300,500);
+        return new Dimension(100,500);
     }
 
     public static void main(String[] args) {
